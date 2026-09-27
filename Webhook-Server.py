@@ -40,22 +40,25 @@ def health():
     except:
         return jsonify({"status": "ok"})
 
-# Auto-start bot in background when imported by gunicorn
-def start_bot_thread():
+# Bot starter - runs once
+def _start_telegram_bot():
     time.sleep(2)
+    print("🤖 Starting Telegram Bot...")
     try:
         from main_bot import main as bot_main
-        print("🤖 Starting Telegram Bot in background...")
         bot_main()
     except Exception as e:
-        print(f"Bot thread error: {e}")
+        print(f"❌ Bot failed: {e}")
+        import traceback
+        traceback.print_exc()
 
-# Start bot thread only once
-bot_started = False
-if not bot_started:
-    bot_started = True
-    t = threading.Thread(target=start_bot_thread, daemon=True)
+# Start bot thread when module is imported (for gunicorn)
+# Use env to prevent double start
+if os.getenv("BOT_THREAD_STARTED") != "1":
+    os.environ["BOT_THREAD_STARTED"] = "1"
+    t = threading.Thread(target=_start_telegram_bot, daemon=True)
     t.start()
+    print("✅ Bot thread started in background")
 
 if __name__ == "__main__":
     port = int(os.getenv("PORT", 10000))

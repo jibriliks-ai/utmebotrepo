@@ -271,7 +271,7 @@ def main():
     # email handler must be last
     app.add_handler( __import__('telegram.ext').ext.MessageHandler(__import__('telegram.ext').filters.TEXT & ~__import__('telegram.ext').filters.COMMAND, handle_email))
 
-    print("UTME Bot with Flutterwave running... (Polling mode - no webhook needed for Telegram)")
+    print("UTME Bot with Flutterwave running... (Polling mode)")
     app.run_polling()
 
 if __name__ == "__main__":
