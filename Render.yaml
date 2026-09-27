@@ -1,11 +1,31 @@
 
 services:
   - type: web
-    name: utme-success-bot
+    name: utme-webhook
     env: python
     plan: free
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn webhook_server:app --bind 0.0.0.0:$PORT --workers 1 --threads 8 --timeout 120
+    startCommand: gunicorn webhook_server:app --bind 0.0.0.0:$PORT --workers 1 --timeout 120
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: FLW_SECRET_KEY
+        sync: false
+      - key: FLW_PUBLIC_KEY
+        sync: false
+      - key: FLW_SECRET_HASH
+        value: utme_secret_hash_123
+      - key: PREMIUM_PRICE
+        value: 2000
+      - key: RUN_MODE
+        value: web
+
+  - type: worker
+    name: utme-bot-worker
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python run.py
     envVars:
       - key: BOT_TOKEN
         sync: false
@@ -17,7 +37,7 @@ services:
         sync: false
       - key: FLW_PUBLIC_KEY
         sync: false
-      - key: FLW_SECRET_HASH
-        value: utme_secret_hash_123
       - key: PREMIUM_PRICE
         value: 2000
+      - key: RUN_MODE
+        value: bot
