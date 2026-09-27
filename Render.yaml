@@ -1,0 +1,25 @@
+
+services:
+  - type: web
+    name: utme-success-bot
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python run.py
+    envVars:
+      - key: BOT_TOKEN
+        sync: false
+      - key: ALOC_TOKEN
+        sync: false
+      - key: DEEPSEEK_API_KEY
+        sync: false
+      - key: FLW_SECRET_KEY
+        sync: false
+      - key: FLW_PUBLIC_KEY
+        sync: false
+      - key: FLW_SECRET_HASH
+        value: utme_secret_hash_123
+      - key: PREMIUM_PRICE
+        value: 2000
+      - key: PORT
+        value: 10000
