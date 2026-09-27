@@ -1,0 +1,47 @@
+[
+  {
+    "id": 1,
+    "subject": "Biology",
+    "year": 2022,
+    "topic": "Living Things",
+    "question": "Which of the following is a living fossil?",
+    "options": {
+      "A": "Amoeba",
+      "B": "Hydra",
+      "C": "Peripatus",
+      "D": "Euglena"
+    },
+    "answer": "C",
+    "explanation": "Peripatus is considered a living fossil because it has remained unchanged for millions of years and shows features of both annelids and arthropods."
+  },
+  {
+    "id": 2,
+    "subject": "Chemistry",
+    "year": 2023,
+    "topic": "Acids and Bases",
+    "question": "What is the pH of a neutral solution at 25\u00b0C?",
+    "options": {
+      "A": "0",
+      "B": "7",
+      "C": "14",
+      "D": "1"
+    },
+    "answer": "B",
+    "explanation": "At 25\u00b0C, neutral pH is 7. Below 7 is acidic, above 7 is basic."
+  },
+  {
+    "id": 3,
+    "subject": "English",
+    "year": 2021,
+    "topic": "Synonyms",
+    "question": "Choose the word that is nearest in meaning to 'Eloquent'",
+    "options": {
+      "A": "Inarticulate",
+      "B": "Fluent",
+      "C": "Quiet",
+      "D": "Rude"
+    },
+    "answer": "B",
+    "explanation": "Eloquent means fluent or persuasive in speaking or writing."
+  }
+]
